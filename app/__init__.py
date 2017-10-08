@@ -16,3 +16,37 @@ from flask_sqlalchemy import SQLAlchemy
 
 from config import config
 
+"""Creating the extensions objects"""
+
+bootstrap = Bootstrap()
+
+mail = Mail()
+
+moment = Moment()
+
+db = SQLAlchemy()
+
+#spacing in this method might cause problems, watchout for that
+
+def create_app(config_name):
+    """Initializes the app
+    Args:
+    config_name: The configuration to use for the app
+    """
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
+
+    bootstrap.init_app(app)
+    moment.init_app(app)
+    db.init_app(app)
+    mail.init_app(app)
+
+    #routes and custom errors go here
+
+    return app
+
+
+
+
+
