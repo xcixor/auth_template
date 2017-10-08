@@ -6,13 +6,5 @@ This method takes as an argument, the name of the configuration to use for the a
 """
 from flask import Flask, render_template
 
-from flask.ext.bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
-
-app = Flask(__name__)      
-@app.route('/')
-def home():
-  return render_template('index.html')
- 
-if __name__ == '__main__':
-  app.run(debug=True)
