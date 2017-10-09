@@ -1,7 +1,7 @@
 """Defines the forms used for authentication
 """
 
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 
@@ -11,7 +11,7 @@ from wtforms import ValidationError
 
 from ..models import User
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     """The login form that is presented to the user
     Attributes:
         email(String): user's email
@@ -26,7 +26,7 @@ class LoginForm(Form):
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
 
-class RegistrationForm(Form):
+class RegistrationForm(FlaskForm):
     """The form presented to the user for registering an account
     Attributes:
         email(String): user's email
