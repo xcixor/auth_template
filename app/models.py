@@ -8,6 +8,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 from flask_login import UserMixin
 
+from . import login_manager
+
+from flask_login import login_required
+
 class User(db.Model):
       """Instantiates a User object that can be stored in the db
       Attributes:
@@ -31,4 +35,18 @@ class Role(db.Model):
         users(object): Represents the users associated with a certain role
       """
       pass
+
+@login_manager.user_loader
+def load_user(user_id):
+      """loads a user with the given identifer for flask_login
+      Args:
+        user_id(integer): The id of the user to be loaded
+      """
+      return User.query.get(int(user_id))
+
+@app.route
+@login_required
+def secret():
+      """protects a route so that its only accessed by authenticated users"""
+      return "Unauthorized"
       
