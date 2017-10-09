@@ -4,13 +4,12 @@ Classes(Models):
   Role: Defines the role of a user in the application
 """
 
-from flask_sqlalchemy import SQLAlchemy
-
 from flask_login import UserMixin
 
-from . import login_manager
+from werkzeug.security import generate_password_hash, check_password_hash
 
-from flask_login import login_required
+from . import login_manager, db
+
 
 class User(db.Model):
     """Instantiates a User object that can be stored in the db
@@ -27,14 +26,19 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    role_id = db.Column(db.Intefer, db.ForeignKey('roles.id'))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
 class Role(db.Model):
     """"Creates the Roles defined for the users of the application
     Attributes:
       users(object): Represents the users associated with a certain role
     """
-    pass
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    users = db.relationship('User', backref='role', lazy='dynamic')
+
+    def __repr__(self):
+        return '<Role %r>' % self.name
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -44,9 +48,9 @@ def load_user(user_id):
     """
     return User.query.get(int(user_id))
 
-@app.route
-@login_required
-def secret():
-    """protects a route so that its only accessed by authenticated users"""
-    return "Unauthorized"
+# @app.route
+# @login_required
+# def secret():
+#     """protects a route so that its only accessed by authenticated users"""
+#     return "Unauthorized"
       
