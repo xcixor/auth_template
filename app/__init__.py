@@ -18,6 +18,8 @@ from config import config
 
 from .auth import auth as auth_blueprint
 
+from flask_login import LoginManager
+
 """Creating the extensions objects"""
 
 bootstrap = Bootstrap()
@@ -27,6 +29,12 @@ mail = Mail()
 moment = Moment()
 
 db = SQLAlchemy()
+
+login_manager = LoginManager()
+
+login_manager.session_protection = 'strong'
+
+login_manager.login_view = 'auth.login'
 
 #spacing in this method might cause problems, watchout for that
 
@@ -42,10 +50,12 @@ def create_app(config_name):
     #BluePrints
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
+    #Extensions
     bootstrap.init_app(app)
     moment.init_app(app)
     db.init_app(app)
     mail.init_app(app)
+    login_manager.init_app(app)
 
     #routes and custom errors go here
 
