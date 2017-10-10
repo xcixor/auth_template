@@ -10,18 +10,21 @@ Getting Started
 
     Installing
     To install the app, clone the project with the following command for mac and linux users
-        git clone https://github.com/xcixor/auth_template
+        $ git clone https://github.com/xcixor/auth_template
     Then, navigate to the project folder in terminal and create a virtual environment as follows
-        virtualenv venv
+        $ virtualenv venv
     After the virtual environment has been created activate it as follows,
-        source venv/bin/activate
+        $ source venv/bin/activate
     Once the virtual environment is active, replicate the app's virtual environment by running the following command
         (venv) $ pip install -r requirements.txt
-    Once installation is finished, launch the app by running the following command
-        python manage.py runserver
+    Once installation is finished, launch the app by running the following commands
+        python manage.py shell - opens a python shell where you create the database as follows
+            >>>db_create_all()
+        after that, exit from the python shell and run;
+            $ python manage.py runserver
     Navigate to the following link in your favorite browser
         http://localhost:5000/
-    Enjoy
+    Enjoy!
     ps, for pc's come back later
 
 Running the Tests
