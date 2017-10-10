@@ -31,6 +31,8 @@ class User(db.Model):
 class Role(db.Model):
     """"Creates the Roles defined for the users of the application
     Attributes:
+      id(Integer): A unique key that represents a particular role
+      name(String): The name of the role
       users(object): Represents the users associated with a certain role
     """
     __tablename__ = 'roles'
