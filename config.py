@@ -29,14 +29,13 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASKY_MAIL_SUBJECT_PREFIX = '[My_App]'
-    # FLASKY_MAIL_SENDER = 'Flasky Admin <pndungu54@gmail.com.com>'
-    FLASKY_MAIL_SENDER = 'pndungu54@gmail.com.com'
-    # FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN') or 'pndungu54@gmail.com'
-    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'joe'
-    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'wN75216895#'
-    FLASKY_ADMIN = 'pndungu54@gmail.com'
-    MAIL_USERNAME = 'joe'
-    MAIL_PASSWORD = 'wN75216895#'
+    FLASKY_MAIL_SENDER = 'pndungu54@gmail.com'
+    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN') or 'pndungu54@gmail.com'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'joe'
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'wN75216895#'
+    # FLASKY_ADMIN = 'pndungu54@gmail.com'
+    # MAIL_USERNAME = 'joe'
+    # MAIL_PASSWORD = 'wN75216895#'
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
@@ -68,8 +67,8 @@ class TestingConfig(Config):
         SQLALCHEMY_DATABASE_URI (String): A URL that gives the location of the app's database
     """
     TESTING = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
-    SQLALCHEMY_DATABASE_URI =  'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+    # SQLALCHEMY_DATABASE_URI =  'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
 
 class ProductionConfig(Config):
     """Contains the configurations for the publicly available app

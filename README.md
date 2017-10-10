@@ -18,7 +18,7 @@ Getting Started
     Once the virtual environment is active, replicate the app's virtual environment by running the following command
         (venv) $ pip install -r requirements.txt
     Once installation is finished, launch the app by running the following command
-        python manage.py
+        python manage.py runserver
     Navigate to the following link in your favorite browser
         http://localhost:5000/
     Enjoy
