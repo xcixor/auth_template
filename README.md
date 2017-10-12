@@ -39,7 +39,7 @@ Contributing
 Versioning
 
 Authors
-
+	pndungu54@gmail.com
 Licences
 
 Acknowledments
