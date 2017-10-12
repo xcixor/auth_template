@@ -11,9 +11,8 @@ Getting Started
     Installing
     To install the app, clone the project with the following command for mac and linux users
         $ git clone https://github.com/xcixor/auth_template
-    Then, navigate to the project folder in terminal and create a virtual environment as follows, assumming you are using python 3.5, else change it to mathch your version.
-        $ python3.5 -m venv myvenv
-
+    Then, navigate to the project folder in terminal and create a virtual environment as follows,
+        $ python -m venv myvenv
     After the virtual environment has been created activate it as follows,
         $ source myvenv/bin/activate
     Once the virtual environment is active, replicate the app's virtual environment by running the following command
